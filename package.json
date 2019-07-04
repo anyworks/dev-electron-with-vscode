@@ -1,0 +1,29 @@
+{
+  "name": "dev-electron-with-vscode",
+  "version": "1.0.0",
+  "description": "contains default settings for developping HTML",
+  "main": "index.js",
+  "scripts": {
+    "app": "electron dest/main.js",
+    "sync": "node -e \" require('ncp').ncp('src/statics','dest'); \" " ,
+    "wsync": "node_modules/.bin/watch --interval=1 \"npm run sync\" src/statics/ ",
+    "wtsc": "node_modules/.bin/tsc --watch",
+    "dev": "concurrently --kill-others \"npm run wtsc\" \"npm run wsync\""
+  },
+  "devDependencies": {
+    "concurrently": "4.1.0",
+    "ncp": "^2.0.0",
+    "typescript": "3.3.3333",
+    "watch": "1.0.2"
+  },
+  "dependencies": {
+    "electron": "4.0.6"
+  },
+  "keywords": [
+    "HTML",
+    "Electron",
+    "typescript"
+  ],
+  "author": "anyworks",
+  "license": "ISC"
+}
