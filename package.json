@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "app": "electron dest/main.js",
-    "sync": "node -e \" require('ncp').ncp('src/statics','dest'); \" " ,
+    "sync": "node -e \" require('ncp').ncp('src/statics','dest'); \" ",
     "wsync": "node_modules/.bin/watch --interval=1 \"npm run sync\" src/statics/ ",
     "wtsc": "node_modules/.bin/tsc --watch",
     "dev": "concurrently --kill-others \"npm run wtsc\" \"npm run wsync\""
@@ -17,7 +17,7 @@
     "watch": "1.0.2"
   },
   "dependencies": {
-    "electron": "4.0.6"
+    "electron": "^6.0"
   },
   "keywords": [
     "HTML",
