@@ -1,14 +1,29 @@
-process.once('loaded', () => {
-    global.setImmediate = "";
-  });
-
 var TK = {};
+TK["stack"] = undefined;
+
 TK.addScriptTag = function (src) {
     var script = document.createElement('script');
     script.src = src;
     script.type = "text/javascript";
-    document.head.appendChild(script);
+    script.onload  = function(e){
+        alert("script was onloaded");
+        var next = this.stack.shift();
+        if(next)
+            TK.addScriptTag(script);
+        else
+        this.stack == unidefined;
+    };
+    
+    if(this.stack === undefined)
+    {
+        this.stack = [];
+        
+        document.head.appendChild(script);
+    }else{
+        this.stack.push(src);
+    }
 };
+
 TK.addStyleTag = function (src) {
     var link = document.createElement('link');
     link.rel = "stylesheet";
