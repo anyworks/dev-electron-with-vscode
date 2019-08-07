@@ -27,7 +27,7 @@ function app(){
 }
 
 window.addEventListener("DOMContentLoaded",()=>{
-  window.TK.use.all(["d3","icons","react","reset"]);
+  window.TK.use.all(["d3","icons","react","reset","jasmine"]);
   window.TK.addStyle(style);
 });
 window.addEventListener("load",app);

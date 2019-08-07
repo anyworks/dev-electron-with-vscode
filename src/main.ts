@@ -21,7 +21,7 @@ app.on('ready', function () {
 
   mainWindow = new BrowserWindow({
     webPreferences :{
-      preload : "preload.js"
+      preload : app.getAppPath() + "/preload.js"
     } ,
     width: 800, height: 600 
   });

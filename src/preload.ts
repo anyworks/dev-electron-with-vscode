@@ -5,10 +5,10 @@ TK.addScriptTag = function (src) {
     var script = document.createElement('script');
     script.src = src;
     script.type = "text/javascript";
-    script.onload  = function(e){
+    script.onload  = (e)=>{
         var next = this.stack.shift();
         if(next)
-            document.head.appendChild(script);
+            document.head.appendChild(next);
         else
             this.stack = undefined;
     };
@@ -33,19 +33,7 @@ TK.addStyle = function (src) {
     link.innerHTML = src;
     document.head.appendChild(link);
 };
-TK.waitForSelector = async function (selector) {
-    return new Promise((resolve, reject) => {
-        let retry = 5;
-        var tryToResolve = () => {
-            let res = document.querySelector(selector);
-            if (res) return resolve(res);
-            retry--;
-            if (!retry) return reject("timed out : " + selector);
-            setTimeout(tryToResolve, 500);
-        };
-        tryToResolve();
-    });
-};
+
 TK.use = {
     d3: async () => {
         TK.addScriptTag("https://d3js.org/d3.v5.min.js");
@@ -55,6 +43,12 @@ TK.use = {
     react: async () => {
         TK.addScriptTag("https://unpkg.com/react@16/umd/react.development.js");
         TK.addScriptTag("https://unpkg.com/react-dom@16/umd/react-dom.development.js");
+    },
+    jasmine: async () => {
+        TK.addStyleTag("https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.4.0/jasmine.min.css");
+        TK.addScriptTag("https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.4.0/jasmine.min.js");
+        TK.addScriptTag("https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.4.0/jasmine-html.min.js");
+        TK.addScriptTag("https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.4.0/boot.min.js");
     },
     reset: async () => {
         TK.addStyleTag("https://cdn.jsdelivr.net/npm/ress@1.2.2/ress.css")
