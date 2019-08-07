@@ -6,23 +6,19 @@ TK.addScriptTag = function (src) {
     script.src = src;
     script.type = "text/javascript";
     script.onload  = function(e){
-        alert("script was onloaded");
         var next = this.stack.shift();
         if(next)
-            TK.addScriptTag(script);
+            document.head.appendChild(script);
         else
-        this.stack == unidefined;
+            this.stack = undefined;
     };
     
     if(this.stack === undefined)
     {
         this.stack = [];
-        
         document.head.appendChild(script);
-        alert("2")
-    }else{
-        this.stack.push(src);
-    }
+    }else
+        this.stack.push(script);
 };
 
 TK.addStyleTag = function (src) {
