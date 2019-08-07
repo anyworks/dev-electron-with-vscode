@@ -19,6 +19,7 @@ TK.addScriptTag = function (src) {
         this.stack = [];
         
         document.head.appendChild(script);
+        alert("2")
     }else{
         this.stack.push(src);
     }

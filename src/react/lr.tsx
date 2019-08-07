@@ -27,7 +27,8 @@ ReactDOM.render(<MainFrame />, document.querySelector('#content'));
 }
 
 w.addEventLister("DOMContentLoaded",function(e){
-
+  alert(w);
+  TK.use.all(["d3"]);
 });
 
 })(window);
