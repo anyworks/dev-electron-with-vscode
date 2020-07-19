@@ -11,13 +11,13 @@
     "dev": "concurrently --kill-others \"npm run wtsc\" \"npm run wsync\""
   },
   "devDependencies": {
-    "concurrently": "^4.1.2",
+    "concurrently": "^5.2.0",
     "ncp": "^2.0.0",
     "typescript": "3.3.3333",
     "watch": "1.0.2"
   },
   "dependencies": {
-    "electron": "^6.0"
+    "electron": ">=7.2.4"
   },
   "keywords": [
     "HTML",
